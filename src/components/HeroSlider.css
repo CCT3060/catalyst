@@ -7,11 +7,11 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  transition: background 1.1s cubic-bezier(.4, 0, .2, 1);
+  transition: background 7.1s cubic-bezier(.4, 0, .2, 1);
   --hs-r: clamp(170px, 15vw, 260px);
   /* orbit radius */
   --hs-ease: cubic-bezier(.22, 1, .36, 1);
-  --hs-spin: 1.5s;
+  --hs-spin: 2.5s;
   /* orbit travel time */
 }
 

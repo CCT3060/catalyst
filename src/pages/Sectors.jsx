@@ -2,46 +2,46 @@ import { useEffect, useRef, useState } from "react";
 
 const sectors = [
   {
-    num: "01", color: "#FF7F00", labelColor: "#D96D00", label: "EDUCATION", title: "Environments That Inspire Learning",
-    desc: "Education extends far beyond classrooms. It is shaped by every interaction, every space, and every experience across a campus. We create vibrant learning environments that nurture curiosity, inspire growth, and empower institutions to deliver meaningful educational experiences.",
-    tags: ["Campus Experience", "Safety & Compliance", "Student Well-Being", "Operational Excellence", "Sustainable Campuses"],
-    tagline: "Supporting environments where curiosity grows and futures take shape.",
-    img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200"
-  },
-  {
-    num: "02", color: "#43934A", labelColor: "#377B3D", label: "WORKLIFE", title: "Where Experience Meets Performance",
-    desc: "The modern workplace is more than a place to work. It is where culture is built, ideas are exchanged, and innovation comes to life. We transform workplaces into environments that enhance experience, cultivate belonging, and support sustainable performance.",
+    num: "01", color: "#FF7F00", labelColor: "#D96D00", label: "CORPORATE", title: "Corporate & Commercial Spaces",
+    desc: "Workplaces are more than buildings, they are where ideas grow, teams connect, and performance takes shape. We help organizations create engaging, high-performing environments that elevate employee experiences and support business success.",
     tags: ["Workplace Experience", "Employee Well-Being", "Operational Efficiency", "Smart Work Environments", "Future-Ready Campuses"],
     tagline: "Creating workplaces that empower individuals and strengthen organizations.",
     img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    num: "03", color: "#FFB800", labelColor: "#b07c00", label: "LEISURE", title: "Experiences That Leave a Lasting Impression",
-    desc: "Leisure environments are built around moments, memories, and meaningful experiences. Whether welcoming visitors, guests, or communities, these spaces require a seamless blend of service, comfort, and operational excellence. We help create environments that elevate experiences while ensuring consistency, efficiency, and care behind the scenes.",
-    tags: ["Guest Experience", "Destination Management", "Community Engagement", "Experience Design", "Service Excellence"],
+    num: "02", color: "#43934A", labelColor: "#377B3D", label: "MANUFACTURING", title: "Manufacturing, Industrial & Infrastructure",
+    desc: "Powering the environments that drive industry forward. From manufacturing facilities to logistics networks and critical infrastructure, we create high-performing environments that strengthen operational continuity, workforce experience, and business resilience.",
+    tags: ["Critical Operations Support", "Infrastructure Reliability", "Safety & Risk Management", "Environmental Responsibility", "Sustainable Growth"],
+    tagline: "Supporting the systems that power industries, communities, and progress.",
+    img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1200"
+  },
+  {
+    num: "03", color: "#FFB800", labelColor: "#b07c00", label: "INFRASTRUCTURE", title: "Infrastructure, Public Sector & Smart Cities",
+    desc: "As cities and public spaces continue to evolve, organizations require trusted partners who can support large-scale infrastructure and community environments. Our approach focuses on creating sustainable environments that support future-ready communities.",
+    tags: ["Community Engagement", "Destination Management", "Experience Design", "Service Excellence", "Future-Ready"],
     tagline: "Helping create memorable experiences that people return to again and again.",
     img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    num: "04", color: "#FF7F00", labelColor: "#D96D00", label: "HEALTHCARE", title: "Supporting Better Outcomes, Every Day",
-    desc: "Healthcare is built on trust, where every interaction, every system, and every environment influence the quality of care. Bringing together technology, infrastructure, and operational excellence, we strengthen the foundations that support exceptional patient experiences, clinical performance, and better healthcare outcomes.",
-    tags: ["Clinical Support Environments", "Patient Experience", "Technology Reliability", "Safety & Compliance", "Operational Continuity"],
-    tagline: "Supporting environments where care, trust, and excellence come together.",
-    img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200"
+    num: "04", color: "#FF7F00", labelColor: "#D96D00", label: "EDUCATION", title: "Education",
+    desc: "Educational institutions are more than places of learning—they are environments that shape future generations. From schools and universities to student residences, Catalyst creates safe, hygienic, and inspiring campuses that foster academic excellence, student well-being, and seamless day-to-day operations. Our integrated solutions help educators focus on what matters most: empowering students to learn, grow, and thrive.",
+    tags: ["Campus Experience", "Safety & Compliance", "Student Well-Being", "Operational Excellence", "Sustainable Campuses"],
+    tagline: "Supporting environments where curiosity grows and futures take shape.",
+    img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    num: "05", color: "#43934A", labelColor: "#377B3D", label: "LIVING", title: "Creating Communities People Are Proud to Call Home",
-    desc: "Thriving communities depend on environments that are safe, efficient, and thoughtfully managed. Catalyst delivers the operational foundation and community-focused experiences that transform residential and mixed-use developments into places where comfort, connection, and quality of life flourish.",
+    num: "05", color: "#43934A", labelColor: "#377B3D", label: "LIVING", title: "Community Living",
+    desc: "Communities flourish when people feel safe, connected, and cared for. Catalyst partners with residential communities and integrated townships to deliver thoughtfully managed environments that prioritize comfort, safety, sustainability, and operational excellence. Through integrated facility management, food services, infrastructure support, and community-focused solutions, we help create vibrant living spaces where residents can enjoy a higher quality of life.",
     tags: ["Community Experience", "Resident Well-Being", "Sustainable Living", "Safety & Comfort", "Long-Term Value Creation"],
     tagline: "Creating spaces that foster belonging and enrich everyday living.",
     img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    num: "06", color: "#FFB800", labelColor: "#b07c00", label: "ENERGY", title: "Powering Progress Responsibly",
-    desc: "Energy is the foundation of growth, connectivity, and economic development. As the sector evolves, organizations require environments that balance operational excellence, safety, sustainability, and resilience. We support energy ecosystems with solutions designed to strengthen performance while enabling a more sustainable future.",
-    tags: ["Critical Operations Support", "Infrastructure Reliability", "Safety & Risk Management", "Environmental Responsibility", "Sustainable Growth"],
-    tagline: "Supporting the systems that power industries, communities, and progress.",
-    img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1200"
+    num: "06", color: "#FFB800", labelColor: "#b07c00", label: "HEALTHCARE", title: "Healthcare Technology Management",
+    desc: "Supporting better care through people, technology, and operational excellence. We support hospitals, healthcare institutions, and life sciences organizations enhance patient experiences, optimize clinical operations, and maximize the performance of critical healthcare technologies while maintaining the highest standards of safety, compliance, and care quality.",
+    tags: ["Clinical Support Environments", "Patient Experience", "Technology Reliability", "Safety & Compliance", "Operational Continuity"],
+    tagline: "Supporting environments where care, trust, and excellence come together.",
+    img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200"
   },
 ];
 
