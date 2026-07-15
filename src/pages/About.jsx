@@ -6,6 +6,7 @@ import { FloatingPaths } from "@/components/ui/background-paths";
 import partnerImg from "../assets/Partnerwithus.png";
 import { ProfileCard } from "@/components/ui/profile-card";
 import IndiaMap from "../components/IndiaMap";
+import sankar from "../assets/sankar.png";
 
 function initTilt(card) {
   let rx = 0, ry = 0, trx = 0, tryV = 0, raf;
@@ -41,13 +42,14 @@ export default function About({ go }) {
 
   const leaders = [
     { name: 'Ram Mankari', role: 'Chairman & Managing Director', quote: '"Insert personal leadership quote/strength here."', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/06/1-Ram-Mankari.png', featured: true },
+    { name: 'Sekhar Seshan', role: 'Strategy Advisor & Mentor', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/06/3-Shekar-Seshan.png', featured: true },
     { name: 'Dinesh Lamsal', role: 'Chief Executive Officer', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/06/2-Dinesh-Lamsal.jpg' },
     { name: 'Sachin Desai', role: 'Chief Human Resource Officer', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/06/6-Sachin-Desai.png' },
     { name: 'Parimal Dabhade', role: 'Chief Financial Officer', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/06/5-Parimal-Dabhade.png' },
     { name: 'Tarun Malik', role: 'Director – IFM', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/09/Tarun.pic-PP.jpg' },
     { name: 'Sontosh Lal', role: 'Chief Business Officer – IFM', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2026/06/santosh-1.png' },
     { name: 'Sudeep Suren', role: 'Vice President – Food Solutions', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2024/06/sudeep.jpg' },
-    { name: 'Sankar Sreedharan', role: 'Director – Human Capital & Workforce Solutions', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/09/Sankar-2.jpg' },
+    { name: 'Sankar Sreedharan', role: 'Vice President - Strategy & New Market', quote: '', image: sankar },
 
   ];
 
@@ -102,22 +104,22 @@ export default function About({ go }) {
           <div data-reveal className="lift" style={{ position: "relative", padding: "clamp(10px,2vw,30px)" }}>
             <div style={{ position: "relative" }}>
               <div style={{ fontFamily: "Caveat, cursive", fontSize: 30, letterSpacing: ".2em", color: "#FF7F00", fontWeight: 600 }}>VISION</div>
-              <h3 style={{ color: "#fff", fontSize: "clamp(24px,2.6vw,34px)", marginTop: 16, lineHeight: 1.25 }}>To be the most trusted partner in creating environments that enhance well-being</h3>
-              <p style={{ color: "rgba(255,255,255,.8)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}>To be the most trusted partner in creating environments that enhance well-being, inspire performance, and enable sustainable growth for organizations, communities, and future generations.</p>
+              <h3 style={{ color: "#fff", fontSize: "clamp(24px,2.6vw,34px)", marginTop: 16, lineHeight: 1.25 }}>To create environments where wellbeing thrives</h3>
+              <p style={{ color: "rgba(255,255,255,.8)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}></p>
             </div>
           </div>
           <div data-reveal data-delay="1" className="lift" style={{ position: "relative", padding: "clamp(10px,2vw,30px)" }}>
             <div style={{ position: "relative" }}>
               <div style={{ fontFamily: "Caveat, cursive", fontSize: 30, letterSpacing: ".2em", color: "#FF7F00", fontWeight: 600 }}>MISSION</div>
-              <h3 style={{ color: "#fff", fontSize: "clamp(24px,2.6vw,34px)", marginTop: 16, lineHeight: 1.25 }}>Integrated solutions that create meaningful experiences and lasting impact</h3>
-              <p style={{ color: "rgba(255,255,255,.8)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}>To deliver integrated solutions across food, facilities, infrastructure, workforce, and healthcare technology that create meaningful experiences, improve operational performance, and drive lasting impact.</p>
+              <h3 style={{ color: "#fff", fontSize: "clamp(24px,2.6vw,34px)", marginTop: 16, lineHeight: 1.25 }}>We partner with organizations to build safe, sustainable, socially empowering environments that deliver exceptional experiences through integrated solutions</h3>
+              <p style={{ color: "rgba(255,255,255,.8)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}></p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Leadership */}
-      <section style={{ position: "relative", zIndex: 1, marginTop: -100, borderRadius: "48px 48px 0 0", padding: "clamp(80px,10vw,140px) clamp(20px,4vw,56px)", background: "#fff" }}>
+      <section style={{ position: "relative", zIndex: 1, marginTop: -100, borderRadius: "48px 48px 0 0", padding: "clamp(80px,10vw,140px) clamp(20px,4vw,56px)", background: "#fff", alignItems: "center" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div style={{ maxWidth: 780, marginBottom: 54 }}>
             <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#D96D00", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>Leadership Team</div>
@@ -126,11 +128,21 @@ export default function About({ go }) {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 22 }}>
-            {leaders.map((ldr, i) => (
-              <div key={i} data-reveal data-delay={i > 0 ? String(Math.min(i, 3)) : undefined}>
-                <ProfileCard name={ldr.name} role={ldr.role} image={ldr.image} onConnect={() => window.location.href = '#connect'} />
-              </div>
-            ))}
+            {leaders.map((ldr, i) => {
+              const isLastAndLonely = i === leaders.length - 1 && leaders.length % 4 === 1;
+              return (
+                <div 
+                  key={i} 
+                  data-reveal 
+                  data-delay={i > 0 ? String(Math.min(i, 3)) : undefined}
+                  style={isLastAndLonely ? { gridColumn: "1 / -1", display: "flex", justifyContent: "center" } : {}}
+                >
+                  <div style={{ width: isLastAndLonely ? "calc((100% - 66px) / 4)" : "100%" }}>
+                    <ProfileCard name={ldr.name} role={ldr.role} image={ldr.image} onConnect={() => window.location.href = '#connect'} />
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

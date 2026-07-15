@@ -3,10 +3,11 @@ import "./HeroSlider.css";
 import img3 from "../assets/3.png";
 import img2 from "../assets/2.png";
 import img1 from "../assets/1.png";
+import img4 from "../assets/4.png";
+import img5 from "../assets/5.png";
 
 
 const AUTO_MS = 6500;
-const N = 3;
 
 // accent = headline highlight (brand hues), blob = the big circle behind the images
 const SLIDES = [
@@ -17,10 +18,10 @@ const SLIDES = [
     blob: "#FF7F00",
     wash: "#FBF4EA",
     lines: [
-      [{ t: "Nourishing" }],
-      [{ t: "Experiences.", a: true }],
-      [{ t: "Enabling" },
-      { t: "Performance.", a: true }],
+      [{ t: "Food" },
+      { t: " Experiences", a: true }],
+      [{ t: "That Nourish " },
+      { t: "Well-Being.", a: true }],
     ],
     para: "Food has the power to shape experiences far beyond the dining table. We design dining environments that combine nutrition, hospitality, and innovation — from workplaces to healthcare institutions and educational campuses.",
     img: img2,
@@ -55,7 +56,39 @@ const SLIDES = [
     img: img1,
     alt: "Team of professionals collaborating",
   },
+  {
+    id: "infra",
+    kicker: "Infrastructure Solutions",
+    accent: "#D96D00",
+    blob: "#D96D00",
+    wash: "#F9F2EA",
+    lines: [
+      [{ t: "Building the " }, { t: "Foundations", a: true }],
+      [{ t: "for Better " }, { t: "Experiences.", a: true }],
+    ],
+    para: "Creating resilient environments that support growth, inspire confidence, and deliver lasting value through thoughtful infrastructure solutions.",
+    img: img5,
+    alt: "Construction site with modern infrastructure taking shape",
+  },
+  {
+    id: "healthcare",
+    kicker: "Healthcare Solutions",
+    accent: "#43934A",
+    blob: "#43934A",
+    wash: "#F1F6F2",
+    lines: [
+      [{ t: "Advancing " }, { t: "Well-Being", a: true }],
+      [{ t: "Through Better" }],
+      [{ t: "Care Environments.", a: true }],
+    ],
+    para: "Creating integrated healthcare environments that empower caregivers, enhance patient experiences, and support operational excellence.",
+    img: img4,
+    alt: "Modern healthcare environment with medical professionals",
+  },
 ];
+
+const N = SLIDES.length;
+const STEP = 360 / N; // degrees the wheel turns per slide
 
 export default function HeroSlider({ go }) {
   // rotation accumulates so the orbit wheel always keeps spinning the same way
@@ -70,7 +103,7 @@ export default function HeroSlider({ go }) {
       let d = next - s.current;
       if (d > N / 2) d -= N;
       if (d < -N / 2) d += N;
-      return { current: next, rotation: s.rotation - d * 120, leaving: s.current };
+      return { current: next, rotation: s.rotation - d * STEP, leaving: s.current };
     });
     clearTimeout(leaveTimer.current);
     leaveTimer.current = setTimeout(() => setState(s => ({ ...s, leaving: null })), 750);
@@ -104,7 +137,7 @@ export default function HeroSlider({ go }) {
           <div className="hs-orbit-box">
             <div className="hs-orbit" style={{ transform: `rotate(${rotation}deg)` }}>
               {SLIDES.map((s, i) => {
-                const slotAngle = 270 + i * 120; // active slot rests to the left of the blob centre
+                const slotAngle = 270 + i * STEP; // active slot rests to the left of the blob centre
                 return (
                   <div
                     key={s.id}

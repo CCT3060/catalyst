@@ -104,7 +104,7 @@ export default function Home({ go }) {
           <div>
             <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#D96D00", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>About Catalyst</div>
             <h2 data-reveal data-delay="1" style={{ fontSize: "clamp(30px,3.6vw,50px)", color: "#191919" }}>An integrated services partner built around people</h2>
-            <p data-reveal data-delay="2" style={{ marginTop: 24, fontSize: 18, lineHeight: 1.7, color: "#46433C" }}>Catalyst Service Solutions is an integrated services partner dedicated to enhancing the environments where people work, heal, learn, live, and connect.</p>
+            <p data-reveal data-delay="2" style={{ marginTop: 24, fontSize: 18, lineHeight: 1.7, color: "#46433C" }}>Catalyst delivers an integrated portfolio of services dedicated to enhancing the environments where people work, heal, learn, live, and connect. </p>
             <p data-reveal data-delay="3" style={{ marginTop: 18, fontSize: 18, lineHeight: 1.7, color: "#6E6A61" }}>By combining operational excellence, technology, and human-centered solutions, we help organizations improve performance, elevate experiences, and create lasting value.</p>
             <button data-reveal data-delay="4" className="mag" onClick={() => go("about")} style={{ marginTop: 34, background: "#191919", color: "#fff", fontWeight: 600, fontSize: 15, padding: "15px 30px", borderRadius: 999 }}>Discover our story →</button>
           </div>
@@ -273,6 +273,11 @@ export default function Home({ go }) {
                     { id: "dubai", location: [25.2, 55.27], label: "Dubai, UAE" },
                     { id: "singapore", location: [1.35, 103.82], label: "Singapore" },
                   ]}
+                  focusLocation={
+                    activePresence === "india" ? [20.6, 78.96] :
+                    activePresence === "dubai" ? [25.2, 55.27] :
+                    activePresence === "singapore" ? [1.35, 103.82] : null
+                  }
                   markerColor={[1, 0.498, 0]}
                   baseColor={[1, 1, 1]}
                   glowColor={[0.9, 0.9, 0.9]}

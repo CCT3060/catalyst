@@ -34,6 +34,7 @@ interface GlobeProps {
   theta?: number
   diffuse?: number
   mapSamples?: number
+  focusLocation?: [number, number] | null
 }
 
 export function Globe({
@@ -54,6 +55,7 @@ export function Globe({
   theta = 0.2,
   diffuse = 1.5,
   mapSamples = 16000,
+  focusLocation = null,
 }: GlobeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pointerInteracting = useRef<{ x: number; y: number } | null>(null)
@@ -63,6 +65,22 @@ export function Globe({
   const phiOffsetRef = useRef(0)
   const thetaOffsetRef = useRef(0)
   const isPausedRef = useRef(false)
+  const focusRef = useRef<[number, number] | null>(null)
+
+  useEffect(() => {
+    focusRef.current = focusLocation
+    if (focusLocation) {
+      // Gradually resetting could be smoother, but setting to 0 instantly makes the 
+      // target phi/theta ease handle the rest of the movement smoothly.
+      phiOffsetRef.current = 0
+      thetaOffsetRef.current = 0
+
+      const timer = setTimeout(() => {
+        focusRef.current = null
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [focusLocation])
 
   const handlePointerDown = useCallback(
     (e: React.PointerEvent) => {
@@ -124,6 +142,12 @@ export function Globe({
     let globe: ReturnType<typeof createGlobe> | null = null
     let animationId: number
     let phi = 0
+    let currentTheta = theta
+    const doublePi = Math.PI * 2
+
+    function locationToAngles(lat: number, lng: number): [number, number] {
+      return [Math.PI - ((lng * Math.PI) / 180) - Math.PI / 2 + Math.PI, (lat * Math.PI) / 180]
+    }
 
     function init() {
       const width = canvas.offsetWidth
@@ -161,8 +185,20 @@ export function Globe({
       })
 
       function animate() {
-        if (!isPausedRef.current) {
+        if (focusRef.current) {
+          const [targetPhi, targetTheta] = locationToAngles(focusRef.current[0], focusRef.current[1])
+          let distPhi = targetPhi - phi
+          while (distPhi > Math.PI) distPhi -= doublePi
+          while (distPhi < -Math.PI) distPhi += doublePi
+          phi += distPhi * 0.04
+
+          let distTheta = targetTheta - currentTheta
+          currentTheta += distTheta * 0.04
+        } else if (!isPausedRef.current) {
           phi += speed
+        }
+
+        if (!isPausedRef.current) {
           if (
             Math.abs(velocity.current.phi) > 0.0001 ||
             Math.abs(velocity.current.theta) > 0.0001
@@ -182,7 +218,7 @@ export function Globe({
         }
         globe!.update({
           phi: phi + phiOffsetRef.current + dragOffset.current.phi,
-          theta: theta + thetaOffsetRef.current + dragOffset.current.theta,
+          theta: currentTheta + thetaOffsetRef.current + dragOffset.current.theta,
           dark,
           mapBrightness,
           markerColor,
