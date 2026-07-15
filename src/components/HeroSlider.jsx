@@ -20,8 +20,7 @@ const SLIDES = [
     lines: [
       [{ t: "Food" },
       { t: " Experiences", a: true }],
-      [{ t: "That Nourish " },
-      { t: "Well-Being.", a: true }],
+      [{ t: "That " }, { t: "Elevate", a: true }],
     ],
     para: "Food has the power to shape experiences far beyond the dining table. We design dining environments that combine nutrition, hospitality, and innovation — from workplaces to healthcare institutions and educational campuses.",
     img: img2,
@@ -34,11 +33,9 @@ const SLIDES = [
     blob: "#43934A",
     wash: "#F3F7F1",
     lines: [
-      [{ t: "Spaces That " }, { t: "Perform.", a: true }],
-      [{ t: "Experiences That" }],
-      [{ t: "Inspire.", a: true }],
+      [{ t: "Spaces That " }, { t: "Perform.", a: true }]
     ],
-    para: "Exceptional facilities don't happen by chance. We deliver integrated facility management that enhances operational performance, elevates everyday experiences, and supports long-term value.",
+    para: "We deliver integrated facility management solutions that create safe, efficient and sustainable environments, enhancing occupant experience while maximizing operational performance.",
     img: img3,
     alt: "Wind turbines and sustainable energy in a green field",
   },
@@ -49,10 +46,11 @@ const SLIDES = [
     blob: "#FFB800",
     wash: "#FBF5E6",
     lines: [
-      [{ t: "People at the " }, { t: "Heart", a: true }],
-      [{ t: "of Everything " }, { t: "We Do", a: true }],
+
+      [{ t: " People who " }, { t: "Make", a: true }],
+      [{ t: "The " }, { t: " Difference", a: true }],
     ],
-    para: "We partner with organizations to build healthier workplaces, safer communities, smarter infrastructure, and exceptional everyday experiences through integrated solutions that enhance well-being and drive performance.",
+    para: "We provide skilled workforce solutions that empower organizations with the right talent to deliver exceptional service, operational excellence and sustainable growth.",
     img: img1,
     alt: "Team of professionals collaborating",
   },
@@ -63,10 +61,11 @@ const SLIDES = [
     blob: "#D96D00",
     wash: "#F9F2EA",
     lines: [
-      [{ t: "Building the " }, { t: "Foundations", a: true }],
-      [{ t: "for Better " }, { t: "Experiences.", a: true }],
+
+      [{ t: "Infrastructures that " }],
+      [{ t: "are " }, { t: "Resilient.", a: true }],
     ],
-    para: "Creating resilient environments that support growth, inspire confidence, and deliver lasting value through thoughtful infrastructure solutions.",
+    para: "We design, build and maintain resilient infrastructure that supports business continuity, enables growth and delivers long-term value through future-ready solutions.",
     img: img5,
     alt: "Construction site with modern infrastructure taking shape",
   },
@@ -77,11 +76,10 @@ const SLIDES = [
     blob: "#43934A",
     wash: "#F1F6F2",
     lines: [
-      [{ t: "Advancing " }, { t: "Well-Being", a: true }],
-      [{ t: "Through Better" }],
-      [{ t: "Care Environments.", a: true }],
+      [{ t: "One hospital one " }, { t: "Ecosystem", a: true }],
+      [{ t: "Uninterrupted " }, { t: "Care", a: true }],
     ],
-    para: "Creating integrated healthcare environments that empower caregivers, enhance patient experiences, and support operational excellence.",
+    para: "We manage the complete lifecycle of biomedical equipment across every department through a single point of accountability, maximizing equipment uptime and enabling uninterrupted patient care.",
     img: img4,
     alt: "Modern healthcare environment with medical professionals",
   },
