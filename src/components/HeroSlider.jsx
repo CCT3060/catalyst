@@ -41,7 +41,7 @@ const SLIDES = [
   },
   {
     id: "people",
-    kicker: "Our People",
+    kicker: "Staffing",
     accent: "#D99000",
     blob: "#FFB800",
     wash: "#FBF5E6",
