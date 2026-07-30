@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import "./HeroSlider.css";
 import img3 from "../assets/3.png";
 import img2 from "../assets/2.png";
@@ -178,7 +179,9 @@ export default function HeroSlider({ go }) {
                 </h1>
                 <p className="hs-para">{s.para}</p>
                 <div className="hs-btns">
-                  <button className="hs-btn-fill mag" onClick={() => go("solutions")}>Explore Solutions →</button>
+                  <button className="hs-btn-fill mag" onClick={() => go("solutions")} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                    Explore Solutions <ArrowRight size={16} />
+                  </button>
                   <button className="hs-btn-ghost mag" onClick={() => go("contact")}>Partner With Us</button>
                 </div>
               </div>
@@ -204,10 +207,10 @@ export default function HeroSlider({ go }) {
         </div>
         <div className="hs-arrows">
           <button className="hs-arrow" aria-label="Previous slide" onClick={() => goTo(current - 1)}>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+            <ChevronLeft size={16} />
           </button>
           <button className="hs-arrow" aria-label="Next slide" onClick={() => goTo(current + 1)}>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+            <ChevronRight size={16} />
           </button>
         </div>
       </div>
