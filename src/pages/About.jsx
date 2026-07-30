@@ -48,7 +48,7 @@ export default function About({ go }) {
     { name: 'Sachin Desai', role: 'Chief Human Resource Officer', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/06/6-Sachin-Desai.png' },
     { name: 'Parimal Dabhade', role: 'Chief Financial Officer', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/06/5-Parimal-Dabhade.png' },
     { name: 'Tarun Malik', role: 'Director – IFM', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2023/09/Tarun.pic-PP.jpg' },
-    { name: 'Sontosh Lal', role: 'Chief Business Officer – IFM', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2026/06/santosh-1.png' },
+    { name: 'Santosh Lal', role: 'Chief Business Officer – IFM', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2026/06/santosh-1.png' },
     { name: 'Sudeep Suren', role: 'Vice President – Food Solutions', quote: '', image: 'https://www.catalystsolutions.eco/wp-content/uploads/2024/06/sudeep.jpg' },
     { name: 'Sankar Sreedharan', role: 'Vice President - Strategy & New Market', quote: '', image: sankar },
 
@@ -132,9 +132,9 @@ export default function About({ go }) {
             {leaders.map((ldr, i) => {
               const isLastAndLonely = i === leaders.length - 1 && leaders.length % 4 === 1;
               return (
-                <div 
-                  key={i} 
-                  data-reveal 
+                <div
+                  key={i}
+                  data-reveal
                   data-delay={i > 0 ? String(Math.min(i, 3)) : undefined}
                   style={isLastAndLonely ? { gridColumn: "1 / -1", display: "flex", justifyContent: "center" } : {}}
                 >
