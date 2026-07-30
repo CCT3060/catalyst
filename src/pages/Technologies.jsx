@@ -34,15 +34,6 @@ export default function Technologies({ go }) {
       process: ["Audit Assignment", "Digital Execution", "Compliance Report"]
     },
     {
-      name: "Guest Management",
-      category: "Operations",
-      icon: MessageSquare,
-      color: "#8bf163",
-      description: "Customized platform to manage guest interactions, track visits, and enhance customer experience across various industries.",
-      features: ["Guest Registration", "Visit Tracking", "Feedback Collection"],
-      process: ["Register", "Track", "Engage"]
-    },
-    {
       name: "HTM",
       category: "Health Care",
       icon: Stethoscope,
