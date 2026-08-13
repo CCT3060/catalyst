@@ -62,7 +62,7 @@ export default function Nav({ go, darkHero, activeNav, mobileOpen, setMobileOpen
           </span>
           <div style={{ position: "absolute", top: "100%", left: 0, right: 0, height: 14 }} />
           <div className="sol-menu" style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", marginTop: 14, width: 330, background: "rgba(255,255,255,.92)", backdropFilter: "blur(24px)", border: "1px solid rgba(25,25,25,.08)", borderRadius: 24, boxShadow: "0 24px 60px rgba(25,25,25,.18)", padding: 10 }}>
-            {[["food", "Food Services"], ["ifm", "IFM"], ["infra", "Infrastructure "], ["htm", "Healthcare "], ["workforce", "WorkForce "]].map(([p, name]) => {
+            {[["food", "Food Services"], ["ifm", "IFM"], ["infra", "Infrastructure "], ["htm", "Healthcare Technology Management"], ["workforce", "WorkForce "]].map(([p, name]) => {
               return (
                 <div key={p} onClick={() => go(p)} className="solrow" style={{ display: "flex", alignItems: "center", padding: "12px 14px", borderRadius: 16, cursor: "pointer" }}>
                   <div>
@@ -85,7 +85,7 @@ export default function Nav({ go, darkHero, activeNav, mobileOpen, setMobileOpen
               { id: "sectors?section=2", name: "Infrastructure, Public Sector & Smart Cities" },
               { id: "sectors?section=3", name: "Education" },
               { id: "sectors?section=4", name: "Community Living" },
-              { id: "htm", name: "Healthcare Technology Management" }
+              { id: "htm", name: "Healthcare" }
             ].map((s, i) => {
               return (
                 <div key={i} onClick={() => go(s.id)} className="solrow" style={{ display: "flex", alignItems: "center", padding: "12px 14px", borderRadius: 16, cursor: "pointer" }}>
@@ -108,7 +108,7 @@ export default function Nav({ go, darkHero, activeNav, mobileOpen, setMobileOpen
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <button className="mag" data-navcta onClick={() => go("contact")} style={{ background: "#FF7F00", color: "#fff", fontWeight: 600, fontSize: 14, padding: "12px 22px", borderRadius: 999, boxShadow: "0 8px 24px rgba(255,127,0,.35)", whiteSpace: "nowrap" }}>Partner With Us</button>
+        <button className="mag" data-navcta onClick={() => go("contact")} style={{ background: "#0258CC", color: "#fff", fontWeight: 600, fontSize: 14, padding: "12px 22px", borderRadius: 999, boxShadow: "0 8px 24px rgba(2, 88, 204,.35)", whiteSpace: "nowrap" }}>Partner With Us</button>
         <button onClick={() => setMobileOpen(m => !m)} data-burger style={{ display: "none", background: "transparent", width: 42, height: 42, borderRadius: 999, border: "1px solid rgba(25,25,25,.12)", color: "#191919", alignItems: "center", justifyContent: "center" }}>
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>

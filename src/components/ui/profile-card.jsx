@@ -64,7 +64,7 @@ export const ProfileCard = ({ name, role, image, onConnect }) => {
               onClick={onConnect}
               className="bg-[#191919] text-white rounded-lg px-4 py-2 text-sm font-medium
                        transition-all duration-500 ease-out transform hover:scale-105 
-                       hover:bg-[#FF7F00]
+                       hover:bg-[#0258CC]
                        active:scale-95 hover:shadow-md whitespace-nowrap"
             >
               Connect

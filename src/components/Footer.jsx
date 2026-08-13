@@ -32,7 +32,7 @@ export default function Footer({ go }) {
             <div style={{display:"flex",flexDirection:"column",gap:12,fontSize:"14.5px",color:"rgba(0, 0, 0, 0.75)"}}>
               <span>Business Inquiries</span>
               <span>Office Locations</span>
-              <button className="mag" onClick={() => go("contact")} style={{marginTop:8,background:"#FF7F00",color:"#fff",fontWeight:600,fontSize:14,padding:"12px 22px",borderRadius:999,alignSelf:"flex-start"}}>Partner With Us</button>
+              <button className="mag" onClick={() => go("contact")} style={{marginTop:8,background:"#0258CC",color:"#fff",fontWeight:600,fontSize:14,padding:"12px 22px",borderRadius:999,alignSelf:"flex-start"}}>Partner With Us</button>
             </div>
           </div>
         </div>

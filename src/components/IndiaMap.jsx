@@ -4,10 +4,10 @@
 import India from "@svg-maps/india";
 
 const CITIES = [
-  { name: "Pune", x: 130, y: 455, c: "#FF7F00", anchor: "start" },
+  { name: "Pune", x: 130, y: 455, c: "#0258CC", anchor: "start" },
   { name: "Mumbai", x: 100, y: 450, c: "#FFB800", anchor: "end", hub: true },
   { name: "Hyderabad", x: 260, y: 434, c: "#43934A", anchor: "start" },
-  { name: "Bengaluru", x: 247, y: 530, c: "#FF7F00", anchor: "end" },
+  { name: "Bengaluru", x: 247, y: 530, c: "#0258CC", anchor: "end" },
   { name: "Chennai", x: 285, y: 527, c: "#43934A", anchor: "start" },
 ];
 

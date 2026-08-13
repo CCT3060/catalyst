@@ -6,6 +6,7 @@ import img2 from "../assets/2.png";
 import img1 from "../assets/1.png";
 import img4 from "../assets/4.png";
 import img5 from "../assets/5.png";
+import imgHero from "../assets/ChatGPT Image Aug 13, 2026, 12_38_49 PM.png";
 
 
 const AUTO_MS = 6500;
@@ -13,10 +14,24 @@ const AUTO_MS = 6500;
 // accent = headline highlight (brand hues), blob = the big circle behind the images
 const SLIDES = [
   {
+    id: "hero",
+    kicker: "About Catalyst",
+    accent: "#0258CC",
+    blob: "#0258CC",
+    wash: "#EAF2FA",
+    lines: [
+      [{ t: "People at the " }, { t: "Heart", a: true }],
+      [{ t: "of Everything We Do" }],
+    ],
+    para: "We partner organizations build healthier workplaces, safer communities, smarter infrastructure, and exceptional everyday experiences through integrated solutions that enhance well-being and drive performance.",
+    img: imgHero,
+    alt: "People at the Heart of Everything We Do",
+  },
+  {
     id: "food",
     kicker: "Food Services",
-    accent: "#FF7F00",
-    blob: "#FF7F00",
+    accent: "#0258CC",
+    blob: "#0258CC",
     wash: "#FBF4EA",
     lines: [
       [{ t: "Food" },
@@ -29,12 +44,12 @@ const SLIDES = [
   },
   {
     id: "facilities",
-    kicker: "Facility Management",
+    kicker: "IFM",
     accent: "#43934A",
     blob: "#43934A",
     wash: "#F3F7F1",
     lines: [
-      [{ t: "Spaces That " }, { t: "Perform.", a: true }]
+      [{ t: "Spaces That " }, { t: "Perform", a: true }]
     ],
     para: "We deliver integrated facility management solutions that create safe, efficient and sustainable environments, enhancing occupant experience while maximizing operational performance.",
     img: img3,
@@ -42,7 +57,7 @@ const SLIDES = [
   },
   {
     id: "people",
-    kicker: "Staffing Solutions",
+    kicker: "WorkForce Solutions",
     accent: "#D99000",
     blob: "#FFB800",
     wash: "#FBF5E6",
@@ -58,13 +73,13 @@ const SLIDES = [
   {
     id: "infra",
     kicker: "Infrastructure Solutions",
-    accent: "#D96D00",
-    blob: "#D96D00",
+    accent: "#014299",
+    blob: "#014299",
     wash: "#F9F2EA",
     lines: [
 
       [{ t: "Infrastructures that " }],
-      [{ t: "are " }, { t: "Resilient.", a: true }],
+      [{ t: "are " }, { t: "Resilient", a: true }],
     ],
     para: "We design, build and maintain resilient infrastructure that supports business continuity, enables growth and delivers long-term value through future-ready solutions.",
     img: img5,
@@ -72,7 +87,7 @@ const SLIDES = [
   },
   {
     id: "healthcare",
-    kicker: "Healthcare Solutions",
+    kicker: "Healthcare Technology Management",
     accent: "#43934A",
     blob: "#43934A",
     wash: "#F1F6F2",

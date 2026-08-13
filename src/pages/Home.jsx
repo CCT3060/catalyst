@@ -5,13 +5,56 @@ import partnerImg from "../assets/Partnerwithus.png";
 import { Globe } from "@/components/ui/cobe-globe";
 import aboutusImg from "../assets/aboutus.png";
 import { UtensilsCrossed, Building2, Factory, Stethoscope, Users, ArrowRight } from "lucide-react";
+import { useInView } from "framer-motion";
 
+const AnimatedCounter = ({ value, suffix }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (inView) {
+      let start = 0;
+      const end = value;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      const updateCounter = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+
+        setDisplayValue(Math.floor(start + (end - start) * ease));
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        }
+      };
+
+      requestAnimationFrame(updateCounter);
+    }
+  }, [inView, value]);
+
+  return (
+    <span ref={ref}>
+      {displayValue.toLocaleString()}{suffix}
+    </span>
+  );
+};
+
+import certISO9001 from "../assets/certificate/ISO9001.jpg";
+import certISO14001 from "../assets/certificate/iso14001.jpg";
+import certISO45001 from "../assets/certificate/ISO45001.png";
+import certFSSAI from "../assets/certificate/fssai.png";
+import certNABH from "../assets/certificate/nabh-accreditation-consultants-service-500x500.webp";
+import certESG from "../assets/certificate/ESG.jpg";
+import certRegulatory from "../assets/certificate/Regulatory.png";
 
 const SECTORS = [
   { num: "01", name: "Corporate & Commercial Spaces", desc: "Workplaces are more than buildings, they are where ideas grow, teams connect, and performance takes shape. We help organizations create engaging, high-performing environments that elevate employee experiences and support business success.", bg: "#191919", img: "corporate.jpg", page: null },
   { num: "02", name: "Manufacturing, Industrial & Infrastructure", desc: "Powering the environments that drive industry forward. From manufacturing facilities to logistics networks and critical infrastructure, we create high-performing environments that strengthen operational continuity, workforce experience, and business resilience.", bg: "#43934A", img: "manufacturing.jpg", page: null },
   { num: "03", name: "Infrastructure, Public Sector & Smart Cities", desc: "As cities and public spaces continue to evolve, organizations require trusted partners who can support large-scale infrastructure and community environments. Our approach focuses on creating sustainable environments that support future-ready communities.", bg: "#242424", img: "infrastructure.jpg", page: null },
-  { num: "04", name: "Education", desc: "Educational institutions are more than places of learning—they are environments that shape future generations. From schools and universities to student residences, Catalyst creates safe, hygienic, and inspiring campuses that foster academic excellence, student well-being, and seamless day-to-day operations. Our integrated solutions help educators focus on what matters most: empowering students to learn, grow, and thrive.", bg: "#D96D00", img: "education.jpg", page: null },
+  { num: "04", name: "Education", desc: "Educational institutions are more than places of learning—they are environments that shape future generations. From schools and universities to student residences, Catalyst creates safe, hygienic, and inspiring campuses that foster academic excellence, student well-being, and seamless day-to-day operations. Our integrated solutions help educators focus on what matters most: empowering students to learn, grow, and thrive.", bg: "#014299", img: "education.jpg", page: null },
   { num: "05", name: "Community Living", desc: "Communities flourish when people feel safe, connected, and cared for. Catalyst partners with residential communities and integrated townships to deliver thoughtfully managed environments that prioritize comfort, safety, sustainability, and operational excellence. Through integrated facility management, food services, infrastructure support, and community-focused solutions, we help create vibrant living spaces where residents can enjoy a higher quality of life.", bg: "#FFB800", img: "education.jpg", page: null },
   { num: "06", name: "Healthcare Technology Management", desc: "Supporting better care through people, technology, and operational excellence. We support hospitals, healthcare institutions, and life sciences organizations enhance patient experiences, optimize clinical operations, and maximize the performance of critical healthcare technologies while maintaining the highest standards of safety, compliance, and care quality.", bg: "#2E5D33", img: "healthcare.jpg", page: "htm" },
 ];
@@ -31,14 +74,14 @@ const HexCard = ({ p, name, img, go }) => {
 };
 
 const CERTS = [
-  { name: "ISO 9001:2015", sub: "Quality Management Systems", color: "#FF7F00", image: "/certs/iso-9001.webp", detail: "Certified Quality Management System ensuring consistent service delivery, process efficiency, and continuous improvement across all operations." },
-  { name: "ISO 14001:2015", sub: "Environmental Management Systems", color: "#43934A", detail: "Environmental management framework guiding responsible stewardship, sustainability practices, and minimized ecological impact." },
-  { name: "ISO 45001:2018", sub: "Occupational Health & Safety", color: "#FF7F00", detail: "Occupational health and safety management system ensuring safe work environments and a zero-harm culture across all sites." },
-  { name: "FSSAI Certified", sub: "Food Safety & Regulatory Compliance", color: "#FFB800", detail: "Food Safety and Standards Authority of India certified operations ensuring the highest standards in food safety and hygiene." },
-  { name: "NABH-Aligned", sub: "Healthcare Support Practices", color: "#43934A", detail: "Aligned with National Accreditation Board for Hospitals standards, supporting clinical environments with precision and compliance." },
-  { name: "ESG Commitment", sub: "Responsible, Long-Term Stewardship", color: "#FF7F00", detail: "Commitment to Environmental, Social, and Governance principles—driving responsible business and sustainable long-term value creation." },
-  { name: "Regulatory Compliance", sub: "Statutory Standards & Governance", color: "#43934A", detail: "Comprehensive regulatory compliance framework aligned to statutory requirements, industry standards, and governance best practices." },
-  { name: "Safety Protocols", sub: "Industry-Specific Governance", color: "#FF7F00", detail: "Robust safety protocols tailored to each environment—healthcare, hospitality, corporate, and industrial—ensuring protection and accountability." },
+  { name: "ISO 9001:2015", shortName: "ISO 9001", sub: "Quality Management Systems", color: "#0258CC", image: certISO9001, detail: "Certified Quality Management System ensuring consistent service delivery, process efficiency, and continuous improvement across all operations." },
+  { name: "ISO 14001:2015", shortName: "ISO 14001", sub: "Environmental Management Systems", color: "#43934A", image: certISO14001, detail: "Environmental management framework guiding responsible stewardship, sustainability practices, and minimized ecological impact." },
+  { name: "ISO 45001:2018", shortName: "ISO 45001", sub: "Occupational Health & Safety", color: "#0258CC", image: certISO45001, detail: "Occupational health and safety management system ensuring safe work environments and a zero-harm culture across all sites." },
+  { name: "FSSAI Certified", shortName: "FSSAI", sub: "Food Safety & Regulatory Compliance", color: "#FFB800", image: certFSSAI, detail: "Food Safety and Standards Authority of India certified operations ensuring the highest standards in food safety and hygiene." },
+  { name: "NABH-Aligned", shortName: "NABH", sub: "Healthcare Support Practices", color: "#43934A", image: certNABH, detail: "Aligned with National Accreditation Board for Hospitals standards, supporting clinical environments with precision and compliance." },
+  { name: "ESG Commitment", shortName: "ESG", sub: "Responsible, Long-Term Stewardship", color: "#0258CC", image: certESG, detail: "Commitment to Environmental, Social, and Governance principles—driving responsible business and sustainable long-term value creation." },
+  { name: "Regulatory Compliance", shortName: "Regulatory", sub: "Statutory Standards & Governance", color: "#43934A", image: certRegulatory, detail: "Comprehensive regulatory compliance framework aligned to statutory requirements, industry standards, and governance best practices." },
+  { name: "Safety Protocols", shortName: "Safety", sub: "Industry-Specific Governance", color: "#0258CC", detail: "Robust safety protocols tailored to each environment—healthcare, hospitality, corporate, and industrial—ensuring protection and accountability." },
 ];
 
 export default function Home({ go }) {
@@ -99,7 +142,7 @@ export default function Home({ go }) {
             </div>
           </div>
           <div>
-            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#D96D00", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>About Catalyst</div>
+            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#014299", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#0258CC" }}></span>About Catalyst</div>
             <h2 data-reveal data-delay="1" style={{ fontSize: "clamp(30px,3.6vw,50px)", color: "#191919" }}>An integrated services partner built around people</h2>
             <p data-reveal data-delay="2" style={{ marginTop: 24, fontSize: 18, lineHeight: 1.7, color: "#46433C" }}>Catalyst delivers an integrated portfolio of services dedicated to enhancing the environments where people work, heal, learn, live, and connect. </p>
             <p data-reveal data-delay="3" style={{ marginTop: 18, fontSize: 18, lineHeight: 1.7, color: "#6E6A61" }}>By combining operational excellence, technology, and human-centered solutions, we help organizations improve performance, elevate experiences, and create lasting value.</p>
@@ -112,7 +155,7 @@ export default function Home({ go }) {
       <section style={{ padding: "clamp(50px,7vw,90px) clamp(20px,4vw,56px)", background: "rgb(249, 247, 243)", overflow: "hidden" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 70px" }}>
-            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#FF7F00", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18, justifyContent: "center" }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>Solutions Ecosystem<span style={{ width: 26, height: 2, background: "#43934A" }}></span></div>
+            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#0258CC", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18, justifyContent: "center" }}><span style={{ width: 26, height: 2, background: "#0258CC" }}></span>Solutions Ecosystem<span style={{ width: 26, height: 2, background: "#43934A" }}></span></div>
             <h2 data-reveal data-delay="1" style={{ fontSize: "clamp(30px,4vw,54px)", color: "#060606" }}>Five capabilities. One integrated system.</h2>
             <p data-reveal data-delay="2" style={{ marginTop: 20, fontSize: 18, lineHeight: 1.7, color: "rgba(0, 0, 0, 0.76)" }}>When specialized expertise works in harmony, performance improves and meaningful outcomes follow.</p>
           </div>
@@ -121,13 +164,13 @@ export default function Home({ go }) {
           <div data-reveal data-hexwrap style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             {/* Row 1 — 3 hexagons */}
             <div style={{ display: "flex", gap: 18 }}>
-              {[[ "food", "Food Services", "/food-service-hero.png" ], [ "ifm", "Integrated Facilities Management", "/sectors/corporate.jpg" ], [ "infra", "Infrastructure Solutions", "/sectors/infrastructure.jpg" ]].map(([p, name, img]) => (
+              {[["food", "Food Services", "/food-service-hero.png"], ["ifm", "Integrated Facilities Management", "/sectors/corporate.jpg"], ["infra", "Infrastructure Solutions", "/sectors/infrastructure.jpg"]].map(([p, name, img]) => (
                 <HexCard key={p} p={p} name={name} img={img} go={go} />
               ))}
             </div>
             {/* Row 2 — 2 hexagons, naturally centred by flex; negative margin creates honeycomb overlap */}
             <div style={{ display: "flex", gap: 18, marginTop: "clamp(-58px,-6.35vw,-90px)" }}>
-              {[[ "htm", "Healthcare Technology Management", "/sectors/healthcare.jpg" ], [ "workforce", "Workforce Solutions", "/sectors/education.jpg" ]].map(([p, name, img]) => (
+              {[["htm", "Healthcare Technology Management", "/sectors/healthcare.jpg"], ["workforce", "Workforce Solutions", "/sectors/education.jpg"]].map(([p, name, img]) => (
                 <HexCard key={p} p={p} name={name} img={img} go={go} />
               ))}
             </div>
@@ -155,7 +198,7 @@ export default function Home({ go }) {
         <div style={{ padding: "clamp(50px,7vw,90px) clamp(20px,4vw,56px) clamp(40px,5vw,70px)" }}>
           <div style={{ maxWidth: 1240, margin: "0 auto" }}>
             <div style={{ maxWidth: 720 }}>
-              <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#D96D00", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>Sectors We Serve</div>
+              <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#014299", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#0258CC" }}></span>Sectors We Serve</div>
               <h2 data-reveal data-delay="1" style={{ fontSize: "clamp(30px,4vw,52px)", color: "#191919" }}>Every environment presents unique challenges and opportunities</h2>
               <p data-reveal data-delay="2" style={{ marginTop: 20, fontSize: 17, lineHeight: 1.7, color: "#6E6A61" }}>Catalyst combines industry expertise, integrated services, and technology-driven solutions to create healthier, safer, and more efficient environments that enhance experiences and deliver lasting value.</p>
             </div>
@@ -170,7 +213,7 @@ export default function Home({ go }) {
             <div style={{ position: "relative", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", padding: "100px clamp(20px,4vw,56px) 40px" }}>
               <div onClick={SECTORS[activeSector].page ? () => go(SECTORS[activeSector].page) : undefined} style={{ background: "#fff", borderRadius: 36, padding: "clamp(28px,3.5vw,52px)", maxWidth: 640, width: "100%", textAlign: "center", boxShadow: "0 40px 100px rgba(0,0,0,.35)", cursor: SECTORS[activeSector].page ? "pointer" : "default" }}>
                 <div key={`head-${activeSector}`} className="sector-swap">
-                  <div style={{ fontFamily: "Caveat, cursive", fontSize: 24, fontWeight: 600, color: "#D96D00" }}>Sector {SECTORS[activeSector].num}</div>
+                  <div style={{ fontFamily: "Caveat, cursive", fontSize: 24, fontWeight: 600, color: "#014299" }}>Sector {SECTORS[activeSector].num}</div>
                   <h3 style={{ fontFamily: "Inter Tight", fontWeight: 600, fontSize: "clamp(26px,3vw,40px)", letterSpacing: "-.02em", color: "#191919", marginTop: 8, lineHeight: 1.15 }}>{SECTORS[activeSector].name}</h3>
                 </div>
                 <div style={{ marginTop: "clamp(18px,2.5vw,30px)", height: "clamp(160px,24vh,240px)", borderRadius: 24, border: "1px solid rgba(25,25,25,.06)", overflow: "hidden", position: "relative" }}>
@@ -194,16 +237,24 @@ export default function Home({ go }) {
       <section style={{ padding: "clamp(50px,7vw,90px) clamp(20px,4vw,56px)", background: "#F9F7F3" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div style={{ maxWidth: 760, marginBottom: 60 }}>
-            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#D96D00", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>Our Foundations</div>
+            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#014299", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#0258CC" }}></span>Our Foundations</div>
             <h2 data-reveal data-delay="1" style={{ fontSize: "clamp(30px,4vw,52px)", color: "#191919" }}>People are at the heart of every great experience</h2>
             <p data-reveal data-delay="2" style={{ marginTop: 20, fontSize: 17, lineHeight: 1.7, color: "#6E6A61" }}>At Catalyst, our foundations define how we create value and deliver impact. This belief drives our commitment to operational excellence, inspires our approach to innovation, and shapes our responsibility towards people, communities, and the environment.</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 18 }} data-metricgrid>
-            {[["XX+", "Years", "Delivering integrated solutions across diverse industries.", "1"], ["XX+", "Locations", "Supporting organizations across India.", "2"], ["XX,XXX+", "Workforce", "Driving excellence through skilled and dedicated professionals.", "3"], ["XX+", "Client Partnerships", "Built on trust, performance, and long-term collaboration.", "4"], ["XX M+", "Meals Served Annually", "Nourishing workplaces, communities, and institutions every day.", ""], ["XX M+", "Sq. Ft. Managed", "Maintaining safe, efficient, and high-performing environments.", "1"], ["XX+", "Healthcare Assets Managed", "Supporting reliable healthcare operations and patient care.", "2"], ["XX+", "Infrastructure & Community Projects", "Contributing to sustainable growth and resilient ecosystems.", "3"]].map(([num, label, desc, delay], i) => (
-              <div key={i} data-reveal data-delay={delay || undefined} className="lift" style={{ background: "#fff", border: "1px solid rgba(25,25,25,.07)", borderRadius: 28, padding: 30, boxShadow: "0 8px 30px rgba(25,25,25,.04)" }}>
-                <div className="counter" style={{ fontFamily: "Inter Tight", fontSize: 42, fontWeight: 600, background: "#FF7F00", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{num}</div>
-                <div style={{ fontWeight: 600, fontSize: 15, color: "#191919", marginTop: 8 }}>{label}</div>
-                <div style={{ fontSize: 13, color: "#6E6A61", marginTop: 4, lineHeight: 1.5 }}>{desc}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gap: 16 }} data-metricgrid>
+            {[
+              [13, "+", "Years", "1"],
+              [100, "+", "Locations", "2"],
+              [6500, "+", "Workforce", "3"],
+              [100, "+", "Client Partnerships", "4"],
+              [2, "Lakh+", "Meals Served Annually", "5"],
+              [75, "+", "Sq. Ft. Managed", "6"]
+            ].map(([val, suffix, label, delay], i) => (
+              <div key={i} data-reveal data-delay={delay || undefined} className="lift" style={{ background: "#fff", border: "1px solid rgba(25,25,25,.07)", borderRadius: 20, padding: "28px 16px", boxShadow: "0 8px 30px rgba(25,25,25,.04)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", justifyContent: "center", height: "100%" }}>
+                <div className="counter" style={{ fontFamily: "Inter Tight", fontSize: "clamp(24px, 2.2vw, 38px)", fontWeight: 700, background: "#0258CC", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.1 }}>
+                  <AnimatedCounter value={val} suffix={suffix} />
+                </div>
+                <div style={{ fontWeight: 600, fontSize: "clamp(13px, 1.1vw, 15px)", color: "#191919", marginTop: 12, lineHeight: 1.3 }}>{label}</div>
               </div>
             ))}
           </div>
@@ -214,26 +265,27 @@ export default function Home({ go }) {
       <section style={{ padding: "clamp(50px,7vw,90px) 0", background: "#fff", borderTop: "1px solid rgba(25,25,25,.06)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 clamp(20px,4vw,56px)" }}>
           <div style={{ textAlign: "center", marginBottom: "clamp(44px,5vw,64px)" }}>
-            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#D96D00", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 14, justifyContent: "center" }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>CERTIFICATIONS &amp; ACCREDITATIONS<span style={{ width: 26, height: 2, background: "#43934A" }}></span></div>
+            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#014299", fontWeight: 600, fontSize: 24, letterSpacing: "0", marginBottom: 14, justifyContent: "center" }}><span style={{ width: 26, height: 2, background: "#0258CC" }}></span>CERTIFICATIONS &amp; ACCREDITATIONS<span style={{ width: 26, height: 2, background: "#43934A" }}></span></div>
             <h2 data-reveal data-delay="1" style={{ fontSize: "clamp(28px,3.4vw,44px)", color: "#191919" }}>Built on standards you can trust</h2>
           </div>
         </div>
         <div className="cert-marquee" data-reveal>
-          <div className="cert-track">
+          <div className="cert-track" style={{ gap: 24, paddingLeft: 24 }}>
             {[...CERTS, ...CERTS].map((cert, i) => (
-              <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, padding: "0 clamp(25px,3vw,45px)", flex: "none", width: "clamp(230px,22vw,280px)" }}>
+              <div key={i} style={{
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                padding: "30px 20px", flex: "none", width: 220, height: 160,
+                border: "1px solid rgba(25,25,25,.06)", borderRadius: 16, background: "#fff",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.02)"
+              }}>
                 {cert.image ? (
-                  <img src={cert.image} alt={cert.name} style={{ height: 135, width: "auto", objectFit: "contain" }} />
+                  <img src={cert.image} alt={cert.name} style={{ height: 65, width: "auto", objectFit: "contain", marginBottom: 20 }} />
                 ) : (
-                  <div style={{ width: 135, height: 135, borderRadius: "50%", border: `2px solid ${cert.color}`, background: `${cert.color}14`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, padding: 16, textAlign: "center", flex: "none" }}>
-                    <span style={{ fontFamily: "Inter Tight", fontWeight: 600, fontSize: 16, lineHeight: 1.15, color: "#191919" }}>{cert.name.split(":")[0]}</span>
-                    <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: ".12em", color: cert.color }}>CERTIFIED</span>
+                  <div style={{ width: 65, height: 65, borderRadius: "50%", border: `2px solid ${cert.color}`, background: `${cert.color}14`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                    <span style={{ fontFamily: "Inter Tight", fontWeight: 600, fontSize: 11, color: "#191919" }}>{cert.shortName}</span>
                   </div>
                 )}
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontFamily: "Inter Tight", fontWeight: 600, fontSize: 17, color: "#191919" }}>{cert.name}</div>
-                  <div style={{ fontSize: 13, color: "#6E6A61", marginTop: 4 }}>{cert.sub}</div>
-                </div>
+                <div style={{ fontFamily: "Inter Tight", fontWeight: 600, fontSize: 14, color: "#777" }}>{cert.shortName}</div>
               </div>
             ))}
           </div>
@@ -244,7 +296,7 @@ export default function Home({ go }) {
       <section style={{ padding: "clamp(50px,7vw,90px) clamp(20px,4vw,56px)", background: "#F9F7F3" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div style={{ maxWidth: 680, marginBottom: 56 }}>
-            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#D96D00", fontWeight: 600, fontSize: 24, marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#FF7F00" }}></span>Our Presence</div>
+            <div data-reveal style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "Caveat, cursive", color: "#014299", fontWeight: 600, fontSize: 24, marginBottom: 18 }}><span style={{ width: 26, height: 2, background: "#0258CC" }}></span>Our Presence</div>
             <h2 data-reveal data-delay="1" style={{ fontSize: "clamp(30px,4vw,52px)", color: "#191919" }}>Delivering Impact Across Borders</h2>
             <p data-reveal data-delay="2" style={{ marginTop: 20, fontSize: 17, lineHeight: 1.7, color: "#6E6A61" }}>Present across India, the Middle East, and Southeast Asia, Catalyst brings integrated expertise to diverse environments worldwide.</p>
           </div>
@@ -255,9 +307,24 @@ export default function Home({ go }) {
               <div style={{ width: "100%", maxWidth: 450, aspectRatio: "1" }}>
                 <Globe
                   markers={[
-                    { id: "india", location: [20.6, 78.96], label: "India" },
-                    { id: "dubai", location: [25.2, 55.27], label: "Dubai, UAE" },
-                    { id: "singapore", location: [1.35, 103.82], label: "Singapore" },
+                    {
+                      id: "india",
+                      location: [20.6, 78.96],
+                      label: "India",
+                      details: `India Office\nCatalyst Service Solutions Partners Private Limited\n\n401/402, Yash Tower, Opp. D.A.V Public\nSchool, Aundh, Pune – 411007\n\nEmail: sales@catalystsolutions.eco`
+                    },
+                    {
+                      id: "dubai",
+                      location: [25.2, 55.27],
+                      label: "Dubai, UAE",
+                      details: `Middle East\nCatalyst Catering Services LLC (CCS)\n\nDarwish Compound, Warehouse No.4,\nBuilding No: 3, DIP-2,\nDubai\n\nEmail: info@catalystgroupme.com`
+                    },
+                    {
+                      id: "singapore",
+                      location: [1.35, 103.82],
+                      label: "Singapore",
+                      details: `Singapore Office\nComprehensive Support Services Pte. Ltd\n\n12 Woodlands Square, #02-75, Woods\nSquare Tower 1, Singapore – 737715\n\nEmail: sales@catalystsolutions.eco`
+                    },
                   ]}
                   focusLocation={null}
                   markerColor={[1, 0.498, 0]}
@@ -267,8 +334,8 @@ export default function Home({ go }) {
                   mapBrightness={10}
                   markerSize={0.07}
                   markerElevation={0.01}
-                  speed={0.002}
-                  initialPhi={1.5}
+                  speed={0}
+                  initialPhi={1.2}
                   theta={0.3}
                   diffuse={1.2}
                   mapSamples={16000}
