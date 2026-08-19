@@ -88,7 +88,7 @@ export default function About({ go }) {
         </div>
 
         <div style={{ maxWidth: 1240, margin: "70px auto 0", display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 16 }} data-4col>
-          {[["100+", "Locations", "Supporting diverse industries through integrated service excellence.", ""], ["6,500+", "Workforce", "Delivering expertise, care, and commitment every day.", "1"], ["100+", "Client Partnerships", "Built on trust, performance, and shared success.", "2"], ["2Lakhs+", "Meals Served", "Nourishing communities and workplaces.", "3"], ["75+", "Sq. Ft. Managed", "Creating safe, efficient, and future-ready spaces.", "4"]].map(([num, label, desc, delay], i) => (
+          {[["100+", "Locations", "Supporting diverse industries through integrated service excellence.", ""], ["6,500+", "Workforce", "Delivering expertise, care, and commitment every day.", "1"], ["100+", "Client Partnerships", "Built on trust, performance, and shared success.", "2"], ["2Lac+", "Meals Served", "Nourishing communities and workplaces.", "3"], ["75+", "Sq. Ft. Managed", "Creating safe, efficient, and future-ready spaces.", "4"]].map(([num, label, desc, delay], i) => (
             <div key={i} data-reveal data-delay={delay || undefined} className="lift" style={{ textAlign: "center", padding: "26px 14px", borderRadius: 24, background: "#F9F7F3", border: "1px solid rgba(25,25,25,.06)" }}>
               <div style={{ fontFamily: "Inter Tight", fontSize: 30, fontWeight: 600, color: "#014299" }}>{num}</div>
               <div style={{ fontWeight: 600, fontSize: 14, color: "#191919", marginTop: 6 }}>{label}</div>

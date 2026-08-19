@@ -250,7 +250,7 @@ export default function Home({ go }) {
               [100, "+", "Locations", "2"],
               [6500, "+", "Workforce", "3"],
               [100, "+", "Client Partnerships", "4"],
-              [2, "Lakh+", "Meals Served Annually", "5"],
+              [2, "Lac+", "Meals Served Annually", "5"],
               [75, "+", "Sq. Ft. Managed", "6"]
             ].map(([val, suffix, label, delay], i) => (
               <div key={i} data-reveal data-delay={delay || undefined} className="lift" style={{ background: "#fff", border: "1px solid rgba(25,25,25,.07)", borderRadius: 20, padding: "28px 16px", boxShadow: "0 8px 30px rgba(25,25,25,.04)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", justifyContent: "center", height: "100%" }}>
