@@ -1,10 +1,10 @@
 import CTA from "../components/CTA";
 import { NumberedIndex, IndustriesMarquee, CutoutArch } from "../components/SolutionsKit";
-import infrastructureBg from "../assets/INFRASTRUCTURE SOLUTIONS.png";
-import whyInfrastructureBg from "../assets/Why Infrastructure Matters.webp";
-import constructionImg from "../assets/residential-building-under-construction-on-transparent-background-png.png";
+import infrastructureBg from "../assets/infra.jpg";
+import whyInfrastructureBg from "../assets/infra2.jpg";
+import constructionImg from "../assets/infra1.jpg";
 import siteEngineersImg from "../assets/5.png";
-import innovation from "../assets/86de25bf5b2b497bb8be816e43e60bc0.webp";
+import innovation from "../assets/infra3.jpg";
 import { ShieldCheck, Leaf, ArrowRight } from "lucide-react";
 
 export default function Infrastructure({ go }) {

@@ -1,7 +1,7 @@
 import CTA from "../components/CTA";
 import { Kicker, SectionHead, NumberedIndex, PhoneFrame, BrowserFrame, CutoutArch, StatStrip } from "../components/SolutionsKit";
-import healthcareBg from "../assets/Gemini_Generated_Image_sf1puasf1puasf1p.png";
-import clinicalImg from "../assets/4.png";
+import healthcareBg from "../assets/healthbg.jpg";
+import clinicalImg from "../assets/health2.jpg";
 import dashboardImg from "../assets/Screenshot 2026-07-13 161017.png";
 import htmAppImg from "../assets/image.png";
 import { ArrowRight } from "lucide-react";

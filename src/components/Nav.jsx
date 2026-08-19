@@ -85,7 +85,8 @@ export default function Nav({ go, darkHero, activeNav, mobileOpen, setMobileOpen
               { id: "sectors?section=2", name: "Infrastructure, Public Sector & Smart Cities" },
               { id: "sectors?section=3", name: "Education" },
               { id: "sectors?section=4", name: "Community Living" },
-              { id: "htm", name: "Healthcare" }
+              { id: "sectors?section=5", name: "Healthcare" }
+
             ].map((s, i) => {
               return (
                 <div key={i} onClick={() => go(s.id)} className="solrow" style={{ display: "flex", alignItems: "center", padding: "12px 14px", borderRadius: 16, cursor: "pointer" }}>

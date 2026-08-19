@@ -3,9 +3,12 @@ import CTA from "../components/CTA";
 import HeroSlider from "../components/HeroSlider";
 import partnerImg from "../assets/Partnerwithus.png";
 import { Globe } from "@/components/ui/cobe-globe";
-import aboutusImg from "../assets/aboutus.png";
+import aboutusImg from "../assets/pexels-henry-acevedo-382866382-38921234.jpg";
 import { UtensilsCrossed, Building2, Factory, Stethoscope, Users, ArrowRight } from "lucide-react";
 import { useInView } from "framer-motion";
+import img1 from "../assets/pexels-arthur-uzoagba-3061628-37654664.jpg"
+import img2 from "../assets/pexels-dbaler-5997758.jpg"
+import img3 from "../assets/pexels-imamuddin-mohammad-1225850-16687899.jpg"
 
 const AnimatedCounter = ({ value, suffix }) => {
   const ref = useRef(null);
@@ -130,15 +133,15 @@ export default function Home({ go }) {
             </div>
             {/* Box 2 (Middle Right) */}
             <div style={{ position: "absolute", top: "15%", right: 0, width: "55%", height: "55%", borderRadius: 24, overflow: "hidden", border: "6px solid #F9F7F3", boxShadow: "0 20px 40px rgba(0,0,0,0.12)", zIndex: 2 }}>
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Team Collaboration" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src={img1} alt="Team Collaboration" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
             {/* Box 3 (Bottom Left) */}
             <div style={{ position: "absolute", bottom: "10%", left: "5%", width: "42%", height: "42%", borderRadius: 24, overflow: "hidden", border: "6px solid #F9F7F3", boxShadow: "0 20px 40px rgba(0,0,0,0.08)", zIndex: 3 }}>
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Meeting" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src={img2} alt="Meeting" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
             {/* Box 4 (Bottom Right) */}
             <div style={{ position: "absolute", bottom: 0, right: "10%", width: "45%", height: "30%", borderRadius: 24, overflow: "hidden", border: "6px solid #F9F7F3", boxShadow: "0 20px 40px rgba(0,0,0,0.08)", zIndex: 4 }}>
-              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Office Space" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src={img3} alt="Office Space" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
           </div>
           <div>
@@ -164,7 +167,7 @@ export default function Home({ go }) {
           <div data-reveal data-hexwrap style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             {/* Row 1 — 3 hexagons */}
             <div style={{ display: "flex", gap: 18 }}>
-              {[["food", "Food Services", "/food-service-hero.png"], ["ifm", "Integrated Facilities Management", "/sectors/corporate.jpg"], ["infra", "Infrastructure Solutions", "/sectors/infrastructure.jpg"]].map(([p, name, img]) => (
+              {[["food", "Food Services", "/aaron-blanco-tejedor-IfH30ZvmZBQ-unsplash.jpg"], ["ifm", "Integrated Facilities Management", "/sectors/corporate.jpg"], ["infra", "Infrastructure Solutions", "/sectors/infrastructure.jpg"]].map(([p, name, img]) => (
                 <HexCard key={p} p={p} name={name} img={img} go={go} />
               ))}
             </div>
